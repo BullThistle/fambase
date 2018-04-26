@@ -13,7 +13,7 @@ module.exports = function validateRegisterInput(data) {
   });
 
   if (!Validator.isEmail(data.email)) {
-    errors.email = 'Email field is required';
+    errors.email = 'Email is invalid';
   }
 
   if (!Validator.isLength(data.name, { min: 2, max: 30 })) {
