@@ -31,7 +31,7 @@ const ProfileSchema = new Schema({
     type: String
   },
   interests: {
-    type: [string]
+    type: [String]
   }
 });
 
