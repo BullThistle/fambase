@@ -19,7 +19,6 @@ router.get(
       .populate('user', ['name', 'avatar'])
       .then(profile => {
         if (!profile) {
-          console.log('made it here');
           errors.noprofile = 'There is no profile for this user';
           return res.status(404).json(errors);
         }
@@ -29,12 +28,41 @@ router.get(
   }
 );
 
+router.get('/handle/:handle', (req, res) => {
+  const errors = {};
+
+  Profile.findOne({ handle: req.params.handle })
+    .populate('user', ['name', 'avatar'])
+    .then(profile => {
+      if (!profile) {
+        errors.noprofile = 'There is no profile for this user';
+        res.status(404).json(errors);
+      }
+      res.json(profile);
+    })
+    .catch(err => res.status(404).json(err));
+});
+
+router.get('/user/:user_id', (req, res) => {
+  Profile.findOne({ user: req.params.user_id })
+    .populate('user', ['name', 'avatar'])
+    .then(profile => {
+      if (!profile) {
+        errors.noprofile = 'There is no profile for this user';
+        res.status(404).json(errors);
+      }
+      res.json(profile);
+    })
+    .catch(err =>
+      res.status(404).json({ profile: 'There is no profile for this user' })
+    );
+});
+
 router.post(
   '/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const { errors, isValid } = validateProfileInput(req.body);
-    console.log('in post');
     if (!isValid) {
       return res.status(400).json(errors);
     }
