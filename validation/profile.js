@@ -4,7 +4,7 @@ const isEmpty = require('./is-empty');
 module.exports = function validateProfileInput(data) {
   let errors = {};
 
-  dataFields = ['handle', 'ask', 'intrests'];
+  dataFields = ['handle', 'ask', 'interests'];
   dataFields.forEach(field => {
     data[field] = !isEmpty(data[field]) ? data[field] : '';
     if (Validator.isEmpty(data[field])) {
