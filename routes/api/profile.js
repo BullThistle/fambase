@@ -109,4 +109,20 @@ router.post(
   }
 );
 
+router.post(
+  '/event',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      const newEvent = {
+        what: req.body.what,
+        where: req.body.where,
+        when: req.body.when
+      };
+      profile.event.unshift(newEvent);
+      profile.save().then(profile => res.json(profile));
+    });
+  }
+);
+
 module.exports = router;
