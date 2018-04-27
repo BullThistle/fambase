@@ -11,6 +11,13 @@ const ProfileSchema = new Schema({
     required: true,
     max: 40
   },
+  ask: {
+    type: String
+  },
+  interests: {
+    type: [String],
+    required: true
+  },
   event: [
     {
       what: {
@@ -26,13 +33,7 @@ const ProfileSchema = new Schema({
         required: true
       }
     }
-  ],
-  ask: {
-    type: String
-  },
-  interests: {
-    type: [String]
-  }
+  ]
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);
