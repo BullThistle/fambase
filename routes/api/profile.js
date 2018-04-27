@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const validateProfileInput = require('../../validation/profile');
+const validateEventInput = require('../../validation/event');
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
@@ -113,6 +114,11 @@ router.post(
   '/event',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    const { errors, isValid } = validateEventInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
     Profile.findOne({ user: req.user.id }).then(profile => {
       const newEvent = {
         what: req.body.what,
@@ -122,6 +128,24 @@ router.post(
       profile.event.unshift(newEvent);
       profile.save().then(profile => res.json(profile));
     });
+  }
+);
+
+router.delete(
+  '/event/:event_id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        const removeIndex = profile.event
+          .map(item => item.id)
+          .indexOf(req.params.event_id);
+
+        profile.event.splice(removeIndex, 1);
+
+        profile.save().then(profile => res.json(profile));
+      })
+      .catch(err => res.status(404).json(err));
   }
 );
 
