@@ -34,3 +34,9 @@ export const loginUser = userData => (dispatch) => {
       dispatch({ type: GET_ERRORS, payload: err.response.data });
     });
 };
+
+export const logoutUser = () => (dispatch) => {
+  localStorage.removeItem('jwtToken');
+  setAuthToken(false);
+  dispatch(setCurrentUser({}));
+};
