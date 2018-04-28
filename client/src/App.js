@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'styling/semantic.less';
-import { Home, Landing, Navbar } from 'components';
+import { Home, Landing } from 'components';
+import Navbar from './containers/Navbar/Navbar';
 
 class App extends Component {
   isAuthenticatedUser() {
