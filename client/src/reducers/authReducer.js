@@ -1,4 +1,4 @@
-import { TEST_DISPATCH } from '../actions/types';
+import TEST_DISPATCH from '../actions/types';
 
 const initialState = {
   isAuthenticated: false,
