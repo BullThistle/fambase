@@ -2,9 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
+import jwt_decode from 'jwt-decode'; // eslint-disable-line
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser } from './actions/authActions';
 import store from './store';
 import App from './App';
-// import reducers from './reducers';
+
+if (localStorage.jwtToken) {
+  setAuthToken(localStorage.jwtToken);
+  const decoded = jwt_decode(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(decoded));
+}
 
 const render = (Component) => {
   ReactDOM.render(

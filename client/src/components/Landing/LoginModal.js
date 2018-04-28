@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
+import LogIn from '../../containers/LogIn/LogIn';
+import SignUp from '../../containers/SignUp/SignUp';
 
 class LoginModal extends Component {
   state = { activeItem: 'Sign Up' };
@@ -7,8 +9,8 @@ class LoginModal extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
   loginOrSignup() {
-    if (this.state.activeItem === 'Log In') return <p>Log In</p>;
-    return <p>Sign Up</p>;
+    if (this.state.activeItem === 'Log In') return <LogIn />;
+    return <SignUp />;
   }
 
   render() {
