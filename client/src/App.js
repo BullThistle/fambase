@@ -1,17 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'styling/semantic.less';
-import { About, Landing } from 'components';
+import { Home, Landing, Navbar } from 'components';
 
-const App = () => (
-  <div>
-    <Router>
-      <Switch>
+class App extends Component {
+  isAuthenticatedUser() {
+    /* eslint-disable */
+    if (this.props.auth.isAuthenticated) {
+      /* eslint-enable */
+      return (
+        <div>
+          <Navbar />
+          <Route path="/" component={Home} />
+        </div>
+      );
+    }
+    return (
+      <div>
         <Route exact path="/" component={Landing} />
-        <Route path="/about" component={About} />
-      </Switch>
-    </Router>
-  </div>
-);
+      </div>
+    );
+  }
+  render() {
+    return (
+      <div>
+        <Router>
+          <Switch>{this.isAuthenticatedUser()}</Switch>
+        </Router>
+      </div>
+    );
+  }
+}
 
-export default App;
+App.propTypes = {
+  auth: PropTypes.shape({}).isRequired,
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, {})(App);
