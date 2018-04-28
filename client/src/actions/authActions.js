@@ -1,8 +1,11 @@
-import { TEST_DISPATCH } from './types';
+import TEST_DISPATCH from './types';
 
-const registeruser = userData => ({
+export const registeruser = userData => ({
   type: TEST_DISPATCH,
   payload: userData,
 });
 
-export default registeruser;
+export const loginUser = userData => ({
+  type: TEST_DISPATCH,
+  payload: userData,
+});
