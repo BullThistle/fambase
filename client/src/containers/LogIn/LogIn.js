@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Label, Form } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
+import FormFieldGroup from '../../components/Common/FormFieldGroup';
 
 class LogIn extends Component {
   constructor() {
@@ -42,40 +43,22 @@ class LogIn extends Component {
 
     return (
       <Form onSubmit={this.onSubmit}>
-        <Form.Field>
-          <label htmlFor="Email">
-            Email
-            <input
-              id="Email"
-              name="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </label>
-          {errors.email && (
-            <Label basic color="red" pointing>
-              {errors.email}
-            </Label>
-          )}
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="Password">
-            Password
-            <input
-              id="Password"
-              name="password"
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </label>
-          {errors.password && (
-            <Label basic color="red" pointing>
-              {errors.password}
-            </Label>
-          )}
-        </Form.Field>
+        <FormFieldGroup
+          label="Email"
+          placeholder="Email"
+          name="email"
+          value={this.state.email}
+          onChange={this.handleChange}
+          error={errors.email}
+        />
+        <FormFieldGroup
+          label="Password"
+          placeholder="Password"
+          name="password"
+          value={this.state.password}
+          onChange={this.handleChange}
+          error={errors.password}
+        />
         <Button primary type="submit">
           Submit
         </Button>
