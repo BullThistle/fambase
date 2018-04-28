@@ -14,7 +14,9 @@ import {
   Segment,
   Sidebar,
   Visibility,
+  Modal,
 } from 'semantic-ui-react';
+import LoginModal from './LoginModal';
 
 /* eslint-disable react/no-multi-comp */
 /* Heads up! HomepageHeading uses inline styling,
@@ -45,10 +47,19 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? '0.5em' : '1.5em',
       }}
     />
-    <Button primary size="huge">
-      Get Started
-      <Icon name="right arrow" />
-    </Button>
+    <Modal
+      trigger={
+        <Button primary size="huge">
+          Get Started
+          <Icon name="right arrow" />
+        </Button>
+      }
+      closeIcon
+    >
+      <Modal.Content>
+        <LoginModal />
+      </Modal.Content>
+    </Modal>
   </Container>
 );
 
