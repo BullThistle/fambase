@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
+    "axios": "^0.18.0",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.5",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
