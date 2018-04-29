@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE } from './types';
+import {
+  GET_PROFILE,
+  PROFILE_LOADING,
+  CLEAR_CURRENT_PROFILE,
+  GET_ERRORS,
+} from './types';
 
 export const setProfileLoading = () => ({
   type: PROFILE_LOADING,
@@ -27,3 +32,15 @@ export const getCurrentProfile = () => (dispatch) => {
 export const clearCurrentProfile = () => ({
   type: CLEAR_CURRENT_PROFILE,
 });
+
+export const createProfile = (profileData, history) => (dispatch) => {
+  axios
+    .post('/api/profile', profileData)
+    .then(() => history.push('/'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      }),
+    ); // eslint-disable-line
+};
