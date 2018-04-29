@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'styling/semantic.less';
-import { Home, Landing } from 'components';
+import { Landing } from 'components';
 import Navbar from './containers/Navbar/Navbar';
+import Dashboard from './containers/Dashboard/Dashboard';
 
 class App extends Component {
   isAuthenticatedUser() {
@@ -14,7 +15,7 @@ class App extends Component {
       return (
         <div>
           <Navbar />
-          <Route path="/" component={Home} />
+          <Route path="/" component={Dashboard} />
         </div>
       );
     }
