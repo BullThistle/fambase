@@ -5,6 +5,7 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
+  SET_CURRENT_USER,
 } from './types';
 
 export const setProfileLoading = () => ({
@@ -32,6 +33,25 @@ export const getCurrentProfile = () => (dispatch) => {
 export const clearCurrentProfile = () => ({
   type: CLEAR_CURRENT_PROFILE,
 });
+
+export const deleteAccount = () => (dispatch) => {
+  if (window.confirm('Are you sure? This can not be undone.')) {
+    axios
+      .delete('/api/profile')
+      .then(() =>
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {},
+        }),
+      ) // eslint-disable-line
+      .catch(err =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data,
+        }),
+      ); // eslint-disable-line
+  }
+};
 
 export const createProfile = (profileData, history) => (dispatch) => {
   axios
