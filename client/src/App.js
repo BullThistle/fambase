@@ -6,6 +6,7 @@ import 'styling/semantic.less';
 import { Landing } from 'components';
 import Navbar from './containers/Navbar/Navbar';
 import Dashboard from './containers/Dashboard/Dashboard';
+import CreateProfile from './containers/CreateProfile/CreateProfile';
 
 class App extends Component {
   isAuthenticatedUser() {
@@ -15,7 +16,8 @@ class App extends Component {
       return (
         <div>
           <Navbar />
-          <Route path="/" component={Dashboard} />
+          <Route exact path="/" component={Dashboard} />
+          <Route path="/create-profile" component={CreateProfile} />
         </div>
       );
     }
