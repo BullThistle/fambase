@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button } from 'semantic-ui-react';
+import { Button, Container } from 'semantic-ui-react';
 import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import Spinner from '../../components/Common/Spinner';
 import ProfileActions from './ProfileActions';
@@ -54,10 +54,10 @@ class Dashboard extends Component {
     }
 
     return (
-      <div>
+      <Container textAlign="center">
         <h1>Dashboard</h1>
         {dashboardContent}
-      </div>
+      </Container>
     );
   }
 }

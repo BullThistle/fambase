@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Form, Button, Header } from 'semantic-ui-react';
+import { Form, Button, Header, Container } from 'semantic-ui-react';
 import FormFieldGroup from '../../components/Common/FormFieldGroup';
 import { createProfile, getCurrentProfile } from '../../actions/profileActions';
 import isEmpty from '../../validation/isEmpty';
@@ -61,7 +61,7 @@ class CreateProfile extends Component {
     const { errors } = this.state;
 
     return (
-      <div>
+      <Container textAlign="center" style={{ width: '60%' }}>
         <Header as="h2" content="Edit Profile" />
         <Form onSubmit={this.onSubmit}>
           <FormFieldGroup
@@ -92,7 +92,7 @@ class CreateProfile extends Component {
             Submit
           </Button>
         </Form>
-      </div>
+      </Container>
     );
   }
 }

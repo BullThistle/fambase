@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
-import { Header, Card, List } from 'semantic-ui-react';
+import { Header, Card, List, Container } from 'semantic-ui-react';
 
 const Event = (props) => {
   const events = props.event.map(event => (
-    <List.Item key={event.id}>
+    <List.Item key={event.id} style={{ display: 'inline-block' }}>
       <Card>
         <Card.Content header={event.what} />
         <Card.Meta>
@@ -17,10 +17,10 @@ const Event = (props) => {
   ));
 
   return (
-    <div>
+    <Container textAlign="center">
       <Header>Events</Header>
-      <List>{events}</List>
-    </div>
+      <List style={{ textAlign: 'center', marginTop: '40px' }}>{events}</List>
+    </Container>
   );
 };
 

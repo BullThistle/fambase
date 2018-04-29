@@ -53,38 +53,36 @@ class AddEvent extends Component {
     const { errors } = this.state;
 
     return (
-      <div>
-        <Container>
-          <Header as="h2" content="Add Event" />
-          <Form onSubmit={this.onSubmit}>
-            <FormFieldGroup
-              label="Event Name"
-              placeholder="Event Name"
-              name="what"
-              value={this.state.what}
-              onChange={this.handleChange}
-              error={errors.what}
-            />
-            <FormFieldGroup
-              label="Location"
-              placeholder="Location"
-              name="where"
-              value={this.state.where}
-              onChange={this.handleChange}
-              error={errors.where}
-            />
-            <DayPickerInput onDayClick={this.handleDayClick} />
-            {this.state.selectedDay ? (
-              <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>
-            ) : (
-              <p>Please select a day.</p>
-            )}
-            <Button primary type="submit">
-              Submit
-            </Button>
-          </Form>
-        </Container>
-      </div>
+      <Container textAlign="center" style={{ width: '60%' }}>
+        <Header as="h2" content="Add Event" />
+        <Form onSubmit={this.onSubmit}>
+          <FormFieldGroup
+            label="Event Name"
+            placeholder="Event Name"
+            name="what"
+            value={this.state.what}
+            onChange={this.handleChange}
+            error={errors.what}
+          />
+          <FormFieldGroup
+            label="Location"
+            placeholder="Location"
+            name="where"
+            value={this.state.where}
+            onChange={this.handleChange}
+            error={errors.where}
+          />
+          <DayPickerInput onDayClick={this.handleDayClick} />
+          {this.state.selectedDay ? (
+            <p>You clicked {this.state.selectedDay.toLocaleDateString()}</p>
+          ) : (
+            <p>Please select a day.</p>
+          )}
+          <Button primary type="submit">
+            Submit
+          </Button>
+        </Form>
+      </Container>
     );
   }
 }
