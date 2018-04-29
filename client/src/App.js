@@ -7,6 +7,7 @@ import { Landing } from 'components';
 import Navbar from './containers/Navbar/Navbar';
 import Dashboard from './containers/Dashboard/Dashboard';
 import CreateProfile from './containers/CreateProfile/CreateProfile';
+import EditProfile from './containers/EditProfile/EditProfile';
 
 class App extends Component {
   isAuthenticatedUser() {
@@ -18,6 +19,7 @@ class App extends Component {
           <Navbar />
           <Route exact path="/" component={Dashboard} />
           <Route path="/create-profile" component={CreateProfile} />
+          <Route path="/edit-profile" component={EditProfile} />
         </div>
       );
     }
