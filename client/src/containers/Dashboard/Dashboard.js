@@ -8,9 +8,22 @@ class Dashboard extends Component {
     this.props.getCurrentProfile();
   }
   render() {
+    // const { user } = this.props.auth;
+    /* eslint-disable */
+    const { profile, loading } = this.props.profile;
+
+    let dashboardContent;
+
+    if (profile === null || loading) {
+      dashboardContent = <h4>Loading...</h4>;
+    } else {
+      dashboardContent = <h1>Hi</h1>;
+    }
+
     return (
       <div>
         <h1>Dashboard</h1>
+        {dashboardContent}
       </div>
     );
   }
@@ -18,6 +31,12 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.shape({}).isRequired
 };
 
-export default connect(null, { getCurrentProfile })(Dashboard);
+const mapStateToProps = state => ({
+  profile: state.profile,
+  auth: state.auth
+});
+
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
