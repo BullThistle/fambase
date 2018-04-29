@@ -1,24 +1,54 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profileActions';
+import { Button } from 'semantic-ui-react';
+import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import Spinner from '../../components/Common/Spinner';
+import ProfileActions from './ProfileActions';
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
   componentDidMount() {
     this.props.getCurrentProfile();
   }
+
+  handleDelete() {
+    this.props.deleteAccount();
+  }
+
   render() {
-    // const { user } = this.props.auth;
-    /* eslint-disable */
+    const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
 
     let dashboardContent;
 
     if (profile === null || loading) {
       dashboardContent = <Spinner />;
+    } else if (Object.keys(profile).length > 0) {
+      dashboardContent = (
+        <div>
+          <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+          <ProfileActions />
+          <div style={{ marginBottom: '60px' }} />
+          <Button negative onClick={this.handleDelete}>
+            Delete My Account
+          </Button>
+        </div>
+      );
     } else {
-      dashboardContent = <h1>Hi</h1>;
+      dashboardContent = (
+        <div>
+          <p>Welcome {user.name}</p>
+          <p>Your have not yet setup a profile, please add some info</p>
+          <Link to="/create-profile">Create profile</Link>
+        </div>
+      );
     }
 
     return (
@@ -32,12 +62,23 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
-  profile: PropTypes.shape({}).isRequired
+  deleteAccount: PropTypes.func.isRequired,
+  profile: PropTypes.shape({
+    profile: PropTypes.shape({}).isRequired,
+    loading: PropTypes.shape({}).isRequired,
+  }).isRequired,
+  auth: PropTypes.shape({
+    user: PropTypes.shape({}).isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  auth: state.auth
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+/* eslint-disable */
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);
+/* eslint-enable */
