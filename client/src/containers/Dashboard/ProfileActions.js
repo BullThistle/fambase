@@ -10,7 +10,7 @@ const IconExampleRotated = () => (
     </Header>
     <Header as="h4" style={{ display: 'inline' }}>
       <Icon name="calendar" />
-      Add Event
+      <Link to="/add-event">Add Event</Link>
     </Header>
   </div>
 );
