@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Form, Button } from 'semantic-ui-react';
@@ -29,9 +29,7 @@ class CreateProfile extends Component {
       ask: this.state.ask,
       interests: this.state.interests,
     };
-    /* eslint-disable */
     this.props.createProfile(profileData, this.props.history);
-    /* eslint-enable */
   }
 
   handleChange(e) {
@@ -77,9 +75,10 @@ class CreateProfile extends Component {
   }
 }
 
-// CreateProfile.propTypes = {
-//   errors: PropTypes.shape({}).isRequired,
-// };
+CreateProfile.propTypes = {
+  history: PropTypes.shape({}).isRequired,
+  createProfile: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   profile: state.profile,
