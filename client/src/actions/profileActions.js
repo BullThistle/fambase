@@ -34,6 +34,18 @@ export const clearCurrentProfile = () => ({
   type: CLEAR_CURRENT_PROFILE,
 });
 
+export const addEvent = (eventData, history) => (dispatch) => {
+  axios
+    .post('/api/profile/event', eventData)
+    .then(() => history.push('/'))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      }),
+    ); // eslint-disable-line
+};
+
 export const deleteAccount = () => (dispatch) => {
   if (window.confirm('Are you sure? This can not be undone.')) {
     axios
