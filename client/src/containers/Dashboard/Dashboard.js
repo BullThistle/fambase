@@ -6,6 +6,7 @@ import { Button } from 'semantic-ui-react';
 import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import Spinner from '../../components/Common/Spinner';
 import ProfileActions from './ProfileActions';
+import Event from '../../components/Events/Event';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class Dashboard extends Component {
         <div>
           <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
           <ProfileActions />
+          <Event event={profile.event} />
           <div style={{ marginBottom: '60px' }} />
           <Button negative onClick={this.handleDelete}>
             Delete My Account

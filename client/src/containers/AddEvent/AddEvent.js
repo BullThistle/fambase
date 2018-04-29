@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import DayPickerInput from 'react-day-picker';
-// import format from 'date-fns/format';
-// import parse from 'date-fns/parse';
 import { Container, Header, Form, Button } from 'semantic-ui-react';
 import FormFieldGroup from '../../components/Common/FormFieldGroup';
 import { addEvent } from '../../actions/profileActions';
