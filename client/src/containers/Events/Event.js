@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { Header, Card, List, Container, Icon } from 'semantic-ui-react';
@@ -14,7 +13,7 @@ class Event extends Component {
   }
 
   handleDelete(id) {
-    this.props.deleteEvent(id, this.props.history);
+    this.props.deleteEvent(id);
   }
 
   render() {
@@ -50,11 +49,10 @@ class Event extends Component {
 }
 
 Event.propTypes = {
-  history: PropTypes.shape({}).isRequired,
   deleteEvent: PropTypes.func.isRequired,
   event: PropTypes.shape({
     map: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default connect(null, { deleteEvent })(withRouter(Event));
+export default connect(null, { deleteEvent })(Event);
