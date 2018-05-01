@@ -1,6 +1,4 @@
-Server and client for FamBase
-Server uses Node, Express and Mongoose
-Client uses React
+Server and client for FamBase. Server uses Node, Express and Mongoose. Client uses React.
 
 ### How to Use
 
