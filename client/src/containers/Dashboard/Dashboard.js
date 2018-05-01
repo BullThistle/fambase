@@ -6,7 +6,7 @@ import { Button, Container } from 'semantic-ui-react';
 import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import Spinner from '../../components/Common/Spinner';
 import ProfileActions from './ProfileActions';
-import Event from '../../components/Events/Event';
+import Event from '../Events/Event';
 
 class Dashboard extends Component {
   constructor(props) {
