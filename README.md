@@ -10,10 +10,12 @@ Using node, express and mongoose
 npm install
 ```
 
-3.  Run local server
+3.  Run local server and react client
 
 ```
-npm run server
+npm run dev
 ```
 
-Served on localhost:5000
+Server served on localhost:5000
+
+React client served on localhost:3000
