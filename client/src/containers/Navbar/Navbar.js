@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -13,29 +14,29 @@ class Navbar extends Component {
   }
 
   render() {
-    /*eslint-disable*/
     return (
       <Menu>
         <Menu.Item header href="/">
           Fambase
         </Menu.Item>
-        <Menu.Item href="/about">About</Menu.Item>
+        <Menu.Item href="/">Dashboard</Menu.Item>
+        <Menu.Item href="/profiles">Profiles</Menu.Item>
         <Menu.Item onClick={this.onLogoutClick.bind(this)}>Logout</Menu.Item>
       </Menu>
     );
-    /* /*eslint-enable*/
   }
 }
 
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  clearCurrentProfile: PropTypes.func.isRequired
+  clearCurrentProfile: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
 });
 
+/* eslint-disable */
 export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(
   Navbar
 );
