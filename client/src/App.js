@@ -10,6 +10,7 @@ import CreateProfile from './containers/CreateProfile/CreateProfile';
 import EditProfile from './containers/EditProfile/EditProfile';
 import AddEvent from './containers/AddEvent/AddEvent';
 import Profiles from './containers/Profiles/Profiles';
+import Profile from './containers/Profile/Profile';
 
 class App extends Component {
   isAuthenticatedUser() {
@@ -20,10 +21,11 @@ class App extends Component {
         <div>
           <Navbar />
           <Route exact path="/" component={Dashboard} />
-          <Route path="/create-profile" component={CreateProfile} />
-          <Route path="/edit-profile" component={EditProfile} />
-          <Route path="/add-event" component={AddEvent} />
-          <Route path="/profiles" component={Profiles} />
+          <Route exact path="/create-profile" component={CreateProfile} />
+          <Route exact path="/edit-profile" component={EditProfile} />
+          <Route exact path="/add-event" component={AddEvent} />
+          <Route exact path="/profiles" component={Profiles} />
+          <Route exact path="/profile/:handle" component={Profile} />
         </div>
       );
     }
