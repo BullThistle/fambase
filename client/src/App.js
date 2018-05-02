@@ -9,6 +9,7 @@ import Dashboard from './containers/Dashboard/Dashboard';
 import CreateProfile from './containers/CreateProfile/CreateProfile';
 import EditProfile from './containers/EditProfile/EditProfile';
 import AddEvent from './containers/AddEvent/AddEvent';
+import Profiles from './containers/Profiles/Profiles';
 
 class App extends Component {
   isAuthenticatedUser() {
@@ -22,9 +23,11 @@ class App extends Component {
           <Route path="/create-profile" component={CreateProfile} />
           <Route path="/edit-profile" component={EditProfile} />
           <Route path="/add-event" component={AddEvent} />
+          <Route path="/profiles" component={Profiles} />
         </div>
       );
     }
+
     return (
       <div>
         <Route exact path="/" component={Landing} />

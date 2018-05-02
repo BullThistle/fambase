@@ -22,6 +22,7 @@ class Event extends Component {
         <Card centered>
           <Card.Content header={event.what} />
           <Icon
+            link
             name="close"
             color="red"
             style={{
