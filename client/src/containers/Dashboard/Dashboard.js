@@ -66,7 +66,7 @@ Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   profile: PropTypes.shape({
-    profile: PropTypes.shape({}).isRequired,
+    profile: PropTypes.shape({}),
     loading: PropTypes.bool.isRequired,
   }).isRequired,
   auth: PropTypes.shape({
