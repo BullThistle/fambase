@@ -6,6 +6,7 @@ import {
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
   SET_CURRENT_USER,
+  GET_PROFILES,
 } from './types';
 
 export const setProfileLoading = () => ({
@@ -80,6 +81,24 @@ export const deleteAccount = () => (dispatch) => {
         }),
       ); // eslint-disable-line
   }
+};
+
+export const getProfiles = () => (dispatch) => {
+  dispatch(setProfileLoading());
+  axios
+    .get('/api/profile/all')
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data,
+      }),
+    ) // eslint-disable-line
+    .catch(() =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: null,
+      }),
+    ); // eslint-disable-line
 };
 
 export const createProfile = (profileData, history) => (dispatch) => {
