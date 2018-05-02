@@ -21,6 +21,7 @@ class Navbar extends Component {
         </Menu.Item>
         <Menu.Item href="/">Dashboard</Menu.Item>
         <Menu.Item href="/profiles">Profiles</Menu.Item>
+        <Menu.Item href="/posts">Posts</Menu.Item>
         <Menu.Item onClick={this.onLogoutClick.bind(this)}>Logout</Menu.Item>
       </Menu>
     );

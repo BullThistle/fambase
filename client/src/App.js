@@ -11,6 +11,7 @@ import EditProfile from './containers/EditProfile/EditProfile';
 import AddEvent from './containers/AddEvent/AddEvent';
 import Profiles from './containers/Profiles/Profiles';
 import Profile from './containers/Profile/Profile';
+import Posts from './containers/Posts/Posts';
 
 class App extends Component {
   isAuthenticatedUser() {
@@ -26,6 +27,7 @@ class App extends Component {
           <Route exact path="/add-event" component={AddEvent} />
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/profile/:handle" component={Profile} />
+          <Route exact path="/posts" component={Posts} />
         </div>
       );
     }
