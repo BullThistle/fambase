@@ -1,3 +1,6 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable function-paren-newline */
+/* eslint-disable no-alert */
 import axios from 'axios';
 
 import {
@@ -22,13 +25,13 @@ export const getCurrentProfile = () => (dispatch) => {
         type: GET_PROFILE,
         payload: res.data,
       }),
-    ) // eslint-disable-line
+    )
     .catch(() =>
       dispatch({
         type: GET_PROFILE,
         payload: {},
       }),
-    ); // eslint-disable-line
+    );
 };
 
 export const clearCurrentProfile = () => ({
@@ -44,7 +47,7 @@ export const addEvent = (eventData, history) => (dispatch) => {
         type: GET_ERRORS,
         payload: err.response.data,
       }),
-    ); // eslint-disable-line
+    );
 };
 
 export const deleteEvent = id => (dispatch) => {
@@ -55,13 +58,13 @@ export const deleteEvent = id => (dispatch) => {
         type: GET_PROFILE,
         payload: res.data,
       }),
-    ) // eslint-disable-line
+    )
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
       }),
-    ); // eslint-disable-line
+    );
 };
 
 export const deleteAccount = () => (dispatch) => {
@@ -73,13 +76,13 @@ export const deleteAccount = () => (dispatch) => {
           type: SET_CURRENT_USER,
           payload: {},
         }),
-      ) // eslint-disable-line
+      )
       .catch(err =>
         dispatch({
           type: GET_ERRORS,
           payload: err.response.data,
         }),
-      ); // eslint-disable-line
+      );
   }
 };
 
@@ -92,13 +95,13 @@ export const getProfiles = () => (dispatch) => {
         type: GET_PROFILES,
         payload: res.data,
       }),
-    ) // eslint-disable-line
+    )
     .catch(() =>
       dispatch({
         type: GET_PROFILES,
         payload: null,
       }),
-    ); // eslint-disable-line
+    );
 };
 
 export const createProfile = (profileData, history) => (dispatch) => {
@@ -110,5 +113,5 @@ export const createProfile = (profileData, history) => (dispatch) => {
         type: GET_ERRORS,
         payload: err.response.data,
       }),
-    ); // eslint-disable-line
+    );
 };
