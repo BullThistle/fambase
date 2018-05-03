@@ -19,6 +19,7 @@ class PostForm extends Component {
       text: '',
       errors: {},
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -41,6 +42,7 @@ class PostForm extends Component {
     const newPost = {
       text: this.state.text,
       name: user.name,
+      avatar: user.avatar,
     };
 
     this.props.addPost(newPost);
