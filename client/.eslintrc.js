@@ -5,6 +5,7 @@ module.exports = {
     ecmaVersion: 6
   },
   rules: {
+    'no-underscore-dangle': [1, { allow: ['_id'] }],
     'react/jsx-filename-extension': 0,
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
