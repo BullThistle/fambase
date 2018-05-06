@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, Header } from 'semantic-ui-react';
+import { Container, Grid, Header } from 'semantic-ui-react';
 import PostForm from './PostForm';
 import Spinner from '../../components/Common/Spinner';
 import { getPosts } from '../../actions/postActions';
@@ -24,9 +24,15 @@ class Posts extends Component {
 
     return (
       <Container>
-        <Header>Posts</Header>
-        <PostForm />
-        {postContent}
+        <Grid padded="vertically">
+          <Grid.Row>
+            <Header>Posts</Header>
+          </Grid.Row>
+          <Grid.Row>
+            <PostForm />
+          </Grid.Row>
+          <Grid.Row>{postContent}</Grid.Row>
+        </Grid>
       </Container>
     );
   }

@@ -69,6 +69,7 @@ class SignUp extends Component {
           label="Password"
           placeholder="Password"
           name="password"
+          type="password"
           value={this.state.password}
           onChange={this.handleChange}
           error={errors.password}
@@ -77,6 +78,7 @@ class SignUp extends Component {
           label="Confirm Password"
           placeholder="Confirm Password"
           name="password2"
+          type="password"
           value={this.state.password2}
           onChange={this.handleChange}
           error={errors.password2}
